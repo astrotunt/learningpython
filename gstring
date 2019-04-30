@@ -1,0 +1,57 @@
+BA = str(input("Type your string and I'll tell you about the occurence of the letter g\n"))
+count = 0
+def isSoft(char):
+    softletters = ['a','e','f','h','i','l','m','n','o','r','s','x']
+    for y in softletters:
+        if y == char.lower():
+            return True
+
+for x in BA:
+    if x == 'g' or x =='G':
+        count = count + 1
+        print("That is it! A G!")
+    elif isSoft(x) == True:
+        print("Still looking, that is an", x)
+    elif x == ' ':
+        print("Still looking, that is a space")
+    else:
+        print("Still looking, that is a", x)
+
+if count != 0:
+    print("Found this many:",count,"\nG levels at",(count/len(BA))*100)
+else:
+    print("Didn't find any!")
+print("If your original string had all the gs replaced by 9s, it would look like this:")
+strin9 = ""
+for x in BA:
+    if x == 'g' or x =='G':
+        strin9 = strin9 + '9'
+    else:
+        strin9 = strin9 + x
+print(strin9)
+print("Then we can reverse it!")
+length = len(strin9)
+reversed = ""
+while length > 0:
+    reversed += strin9[length-1]
+    length -= 1
+print(reversed)
+
+totallayers = len(strin9)
+layercount = 0
+elongated = ""
+print("Here is a pyramid:\n")
+if totallayers > 1:
+     if layercount == 0:
+        print(strin9[0].center((totallayers*2)))
+        elongated += strin9[0] + ' '
+        layercount = 1
+        while layercount < totallayers:
+            line = strin9[layercount] + ('  '*layercount) + strin9[layercount]
+            print(line.center(totallayers*2))
+            elongated += strin9[layercount] + '  '
+            layercount += 1
+        print(elongated[0:(layercount*2)+2])
+else:
+    print(' ' + strin9[0].center((totallayers*2)))
+    print(strin9[0]*3)
